@@ -2,21 +2,21 @@
 include("sqlcon.php");
 session_start();
 error_reporting(0);
-if(isset($_POST[login]))
+if(isset($_POST["login"]))
 {
-	$rs = mysqli_query($con,"select * from tbladmin where emailid=".$_POST[adminname]." and apassword=".$_POST[password]." ");
+	$rs = mysqli_query($con,"select * from tbladmin where emailid='".$_POST["adminname"]."' and apassword='".$_POST["password"]."'");
 	if(mysqli_num_rows($rs) > 0)
 	{
 		$result = mysqli_fetch_array($rs);
 		  
-		$_SESSION[uid] = $result[0];
-		$_SESSION[name] = $result[1];
-		$_SESSION[type] = "admin";
+		$_SESSION["uid"] = $result["0"];
+		$_SESSION["name"] = $result["1"];
+		$_SESSION["type"] = "admin";
 		
-		echo "<script>window.location=index.php;</script>";
+		echo "<script>window.location='index.php';</script>";
 	}
 	else
-	      echo "<script>alert(Invalid credential!!!!!);</script>";
+	      echo "<script>alert('Invalid credential!!!!!');</script>";
 }
 
 /* ### */  ?>

@@ -97,7 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a class="nav-in" href="contact.php"><span data-letters="Contact">Contact</span></a></li>
 						<?php
 						}
-						else if(isset($_SESSION['type']) && $_SESSION[type] == admin)
+						else if(isset($_SESSION['type']) && $_SESSION['type'] == "admin")
 						{
 							/* ### */  ?>
 								<li><a class="nav-in" href="addadmin.php"><span data-letters="Manage Course">New User</span></a></li>
@@ -161,7 +161,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 							<?php
 						}
-						else if(isset($_SESSION['type']) && $_SESSION[type] == alumni)
+						else if(isset($_SESSION['type']) && $_SESSION['type'] == 'alumni')
 						{
 							/* ### */  ?>
 											<li><a class="nav-in" href="event.php"><span data-letters="Events">Events</span></a></li>
@@ -198,7 +198,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							
 							<?php
 						}
-						else if(isset($_SESSION['type']) && $_SESSION[type] == staff)
+						else if(isset($_SESSION['type']) && $_SESSION['type'] == 'staff')
 						{
 							/* ### */  ?>
 							<li><a class="nav-in" href="job.php"><span data-letters="Jobs">Jobs</span></a></li>
@@ -281,7 +281,7 @@ so get them back by signing up for ALUMNI today! </h4>
 				</div>
 				<div class="news">
 				<?php 
-				$rs = mysqli_query($con, "select * from tblalumnimeet where status=Active and event_date >= CURDATE() order by eventid DESC LIMIT 3");
+				$rs = mysqli_query($con, "select * from tblalumnimeet where status='Active' and event_date >= CURDATE() order by eventid DESC LIMIT 3");
 				if(mysqli_num_rows($rs) > 0)
 				{
 					while($rowd = mysqli_fetch_array($rs))
@@ -301,8 +301,8 @@ so get them back by signing up for ALUMNI today! </h4>
 							
 							</div>
 							<div class="col-md-5 new-2">
-							 <h3><?php echo $rowd[event_name]; /* ### */  ?></h3>
-								<p><?php echo $rowd[description]; /* ### */  ?></p>
+							 <h3><?php echo $rowd['event_name']; /* ### */  ?></h3>
+								<p><?php echo $rowd['description']; /* ### */  ?></p>
 							</div>
 							<div class="col-md-3 new-3">
 								<a class="more1 hvr-sweep-to-bottom" href="event_info.php?eventid=<?php echo $rowd[0]; /* ### */  ?>">Read More</a>
